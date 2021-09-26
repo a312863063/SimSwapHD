@@ -27,5 +27,5 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_224.png)
 
 #### （2）CelebA with 512x512 res
-![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512.png)
+![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_1.png)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_2.png)
