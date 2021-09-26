@@ -15,16 +15,16 @@ The face images and latents will be recored in the `output_img_dir` and `output_
 
 ### 3.Start Training
 #### （1）New Training
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512`<br />
+```CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512```<br />
 Training visualization, loss log-files and model weights will be stored in chekpoints/`name` folder.
 
 #### （2）Finetuning
 `CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue`<br />
 If chekpoints/`name` is an empty file, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
 
-### 4.训练效果
-#### （1）CelebA 224x224
+### 4.Training Result
+#### （1）CelebA with 224x224 res
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_224.png)
 
-#### （2）CelebA 512x512
+#### （2）CelebA with 512x512 res
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512.png)
