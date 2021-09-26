@@ -19,7 +19,7 @@ The face images and latents will be recored in the `output_img_dir` and `output_
 Training visualization, loss log-files and model weights will be stored in chekpoints/`name` folder.
 
 #### （2）Finetuning
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue`<br /><br />
+`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue_train`<br /><br />
 If chekpoints/`name` is an un-existed folder, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
 
 ### 4.Training Result
