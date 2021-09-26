@@ -20,7 +20,7 @@ Training visualization, loss log-files and model weights will be stored in chekp
 
 #### （2）Finetuning
 `CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue`<br /><br />
-If chekpoints/`name` is an empty file, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
+If chekpoints/`name` is an un-existed folder, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
 
 ### 4.Training Result
 #### （1）CelebA with 224x224 res
