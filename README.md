@@ -10,16 +10,16 @@ Reimplement of SimSwap training code<br />
 &emsp;&emsp;line53: `src = src_all * image_size / 112`
 
 ### 2.Making Training Data
-`python make_dataset.py --dataroot ./dataset/CelebA --extract_size 512 --output_img_dir ./dataset/CelebA/imgs --output_latent_dir ./dataset/CelebA/latents`<br />
+`python make_dataset.py --dataroot ./dataset/CelebA --extract_size 512 --output_img_dir ./dataset/CelebA/imgs --output_latent_dir ./dataset/CelebA/latents`<br /><br />
 The face images and latents will be recored in the `output_img_dir` and `output_latent_dir` directories.
 
 ### 3.Start Training
 #### （1）New Training
-```CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512```<br />
+`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512`<br /><br />
 Training visualization, loss log-files and model weights will be stored in chekpoints/`name` folder.
 
 #### （2）Finetuning
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue`<br />
+`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue`<br /><br />
 If chekpoints/`name` is an empty file, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
 
 ### 4.Training Result
