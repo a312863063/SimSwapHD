@@ -77,7 +77,7 @@ class FaceDataSet(Dataset):
         img_att = Image.open(pic_att_dir).convert('RGB')
         img_att = img_att.resize((self.img_size, self.img_size))
         img_att = self.transformer(img_att)
-        latent_att = np.load(latent_att_dir)
+        latent_att = np.load(latent_att_dir)[0]
         latent_att = latent_att / np.linalg.norm(latent_att)
         latent_att = torch.from_numpy(latent_att)
         
