@@ -61,6 +61,7 @@ class fsModel(BaseModel):
         self.netArc = netArc_checkpoint['model'].module
         self.netArc = self.netArc.to(device)
         self.netArc.eval()
+        self.spNorm =SpecificNorm()
 
         if not self.isTrain:
             pretrained_path = '' if not self.isTrain else opt.load_pretrain
@@ -78,7 +79,6 @@ class fsModel(BaseModel):
         self.netD2.to(device)
 
         # G_id network
-        self.spNorm =SpecificNorm()
         self.downsample = nn.AvgPool2d(3, stride=2, padding=[1, 1], count_include_pad=False)
 
         # load networks
