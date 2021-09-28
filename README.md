@@ -1,5 +1,6 @@
 # SimSwap-train
 Reimplement of SimSwap training code<br />
+趁着中秋节复现了一版SimSwap的训练代码，支持高分辨率数据的训练，分享给大家。
 
 ## Instructions
 ### 1.Environment Preparation
