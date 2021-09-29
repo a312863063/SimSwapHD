@@ -142,9 +142,9 @@ class fsModel(BaseModel):
         loss_G_GAN, loss_G_GAN_Feat, loss_G_VGG, loss_G_ID, loss_G_Rec = 0,0,0,0,0
 
         img_fake = self.netG.forward(img_att, latent_id)
-        img_fake = self.spNorm(img_fake)
         if not self.isTrain:
             return img_fake
+        img_fake = self.spNorm(img_fake)
         img_fake_downsample = self.downsample(img_fake)
         img_att_downsample = self.downsample(img_att)
 
