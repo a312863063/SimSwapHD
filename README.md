@@ -29,3 +29,9 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 #### （2）CelebA with 512x512 res
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_1.png)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_2.png)
+
+### 5.Inference
+&emsp;&emsp;I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.Therefore, during Inference you need to modify<br />
+`swap_result = swap_model(None, frame_align_crop_tenor_norm, id_vetor, None, True)[0]` to <br />
+`swap_result = swap_model(None, spNorm(frame_align_crop_tenor_norm), id_vetor, None, True)[0]` <br />
+
