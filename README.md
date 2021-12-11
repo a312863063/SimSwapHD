@@ -88,7 +88,7 @@ NOTICE:<br />
 ## 5.Inference
 ### Face swapping for video with 1 face
 - Run the command with:<br />
-`python test_video_swapsingle.py 
+`python test_video_swapsingle.py /`<br />
 &emsp;&emsp;`--crop_size 512 /`<br />
 &emsp;&emsp;`--use_mask /`<br />
 &emsp;&emsp;`--name CelebA_512_finetune /`<br />
@@ -101,9 +101,9 @@ NOTICE:<br />
 ### Face swapping for video/images with more faces
 - We inherited the same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md).<br /><br />
 
-### Differences from official SimSwap codes
+### Differences from our codes and official codes
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
-- This code can be compatible with the official pretrained-model.<br />
+- This code can be compatible with the official SimSwap pretrained-model.<br />
 <br /><br /><br />
 
 # Our work
