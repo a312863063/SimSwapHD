@@ -5,18 +5,32 @@ Reimplement of SimSwap training code<br />
 我把这份代码的使用文档更新了一版，512pix是可以训的，希望能帮助到各位。<br /><br /><br />
 
 # Instructions
-## 1.Environment Preparation
-### Step 1.Install Packages for python
+## 1.Environment preparation
+### Step 1.Install packages for python
 &emsp;&emsp;Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages and download the pretrained model;<br />
 ### Step 2.Modify the ```insightface``` package to support arbitrary-resolution training
-#### &emsp;&emsp;CONDA environment（recommended）
-&emsp;&emsp;Modify the code in `/*your envs*/site-packages/insightface/utils/face_align.py`:<br />
-&emsp;&emsp;line28: `src_all = np.array([src1, src2, src3, src4, src5])`<br />
-&emsp;&emsp;line53: `src = src_all * image_size / 112`
+#### &emsp;&emsp;CONDA environment (recommend)
+&emsp;&emsp;If your use CONDA and conda environment name is ```simswap```, then find the code: <br />
+&emsp;&emsp; `C://Anaconda/envs/```simswap```/Lib/site-packages/insightface/utils/face_align.py`<br /><br />
+&emsp;&emsp;change #line 28 & 29:<br />
+&emsp;&emsp;&emsp;&emsp;`src = np.array([src1, src2, src3, src4, src5])`<br />
+&emsp;&emsp;&emsp;&emsp;`src_map = {112: src, 224: src * 2}`<br />
+&emsp;&emsp;into<br />
+&emsp;&emsp;&emsp;&emsp;`src_all = np.array([src1, src2, src3, src4, src5])`<br />
+&emsp;&emsp;&emsp;&emsp;`#src_map = {112: src, 224: src * 2}`<br /><br />
+&emsp;&emsp;change #line 53:<br />
+&emsp;&emsp;&emsp;&emsp;`src = src_map[image_size]`<br />
+&emsp;&emsp;into<br />
+&emsp;&emsp;&emsp;&emsp;`src = src_all * image_size / 112`<br /><br />
+#### &emsp;&emsp;None-CONDA environment
+&emsp;&emsp;Just find the location of the package and change the code in the same way as above.<br /><br /><br /><br />
 
-## 2.Making Training Data
-`python make_dataset.py --dataroot ./dataset/CelebA --extract_size 512 --output_img_dir ./dataset/CelebA/imgs --output_latent_dir ./dataset/CelebA/latents`<br /><br />
-The face images and latents will be recored in the `output_img_dir` and `output_latent_dir` directories.
+
+
+## 2.Preparing training data
+&emsp;&emsp;Put all the image files (`.jpg`, `.jpeg`, `.png`, `.bmp` are supported) in your datapath (eg. `./dataset/CelebA`), and run the commad (512 pix for example):<br />
+&emsp;&emsp;`python make_dataset.py --dataroot ./dataset/CelebA --extract_size 512 --output_img_dir ./dataset/CelebA/imgs --output_latent_dir ./dataset/CelebA/latents`<br /><br />
+&emsp;&emsp;After processing, the `cropped face images` and ` net_Arc embedded latents` will be recored in the `output_img_dir` and `output_latent_dir` directories.<br /><br /><br /><br />
 
 ## 3.Start Training
 ### （1）New Training
@@ -42,8 +56,9 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 &emsp;&emsp;`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
 # Apply example
-&emsp;&emsp;我们组做了优化之后的效果：<br />
+&emsp;&emsp;我们组（ByteDance AI-Lab SA-TTS）做了优化之后的效果：<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
-&emsp;&emsp;Watch video here：```docs/apply_example.mp4```, or watch online:<br /><br />
+&emsp;&emsp;Watch video here:<br />
+&emsp;&emsp;Video file here: ```docs/apply_example.mp4```<br /><br />
 
 
