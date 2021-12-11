@@ -86,17 +86,34 @@ NOTICE:<br />
 <br /><br /><br /><br />
 
 ## 5.Inference
-- I applied spNorm to the high-resolution image during training, which is conducive to the the model learning. Therefore, our Inference codes are different from official codes.<br />
-- In order to be compatible with the official model, I modify all the places including
+### Face swapping for video with 1 face
+- Run the command with:<br />
+`python test_video_swapsingle.py 
+&emsp;&emsp;`--crop_size 512 /`<br />
+&emsp;&emsp;`--use_mask /`<br />
+&emsp;&emsp;`--name CelebA_512_finetune /`<br />
+&emsp;&emsp;`--Arc_path arcface_model/arcface_checkpoint.tar /`<br />
+&emsp;&emsp;`--pic_a_path ./demo_file/Iron_man.jpg /`<br />
+&emsp;&emsp;`--video_path ./demo_file/multi_people_1080p.mp4 /`<br />
+&emsp;&emsp;`--output_path ./output/multi_test_swapsingle.mp4 /`<br />
+&emsp;&emsp;`--temp_path ./temp_results `<br /><br />
+
+### Face swapping for video/images with more faces
+- We inherited the same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md).<br /><br />
+
+### Differences from official SimSwap codes
+- I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
+- In order to be compatible with the official pretrained-model, I modify all the places including: <br />
 `swap_result = swap_model(None, frame_align_crop_tenor, id_vetor, None, True)[0]`<br />
 to <br />
-`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` 
-<br /><br /><br /><br />
+`input_norm = spNorm(frame_align_crop_tenor) if opt.name != 'people' else frame_align_crop_tenor`<br />
+`swap_result = swap_model(img_id, input_norm, id_vetor, None)[0]`<br />
+<br /><br /><br />
 
 # Our work
-&emsp;&emsp;I share with you the effect of improved version SimSwapHD, which has made changes in both structure and training-processing from our group.<br />
+&emsp;&emsp;I share with you the effect of improved version <b>SimSwapHD</b>, which has made changes in both structure and training-processing from our group.<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
-&emsp;&emsp;Watch video here:<br />
-&emsp;&emsp;Video file is here: ```docs/apply_example.mp4```<br /><br />
+Watch video here:<br />
+Or here: ```docs/apply_example.mp4```<br /><br />
 
 
