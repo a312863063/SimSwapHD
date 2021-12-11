@@ -20,7 +20,7 @@ def _totensor(array):
     img = tensor.transpose(0, 1).transpose(0, 2).contiguous()
     return img.float().div(255)
 
-def video_swap(video_path, target_id_norm_list,source_specific_id_nonorm_list,id_thres, swap_model, detect_model, save_path, temp_results_dir='./temp_results', crop_size=224, no_simswaplogo = False,use_mask =False):
+def video_swap(video_path, target_id_norm_list,source_specific_id_nonorm_list,id_thres, swap_model, detect_model, save_path, temp_results_dir='./temp_results', crop_size=224, no_simswaplogo = False,use_mask =False, name='people'):
     video_forcheck = VideoFileClip(video_path)
     if video_forcheck.audio is None:
         no_audio = True
@@ -88,7 +88,10 @@ def video_swap(video_path, target_id_norm_list,source_specific_id_nonorm_list,id
                     id_compare_values.append([])
                     for source_specific_id_nonorm_tmp in source_specific_id_nonorm_list:
                         id_compare_values[-1].append(mse(frame_align_crop_crop_id_nonorm,source_specific_id_nonorm_tmp).detach().cpu().numpy())
-                    frame_align_crop_tenor_list.append(frame_align_crop_tenor)
+                    if name == 'people':
+                        frame_align_crop_tenor_list.append(frame_align_crop_tenor) 
+                    else:
+                        frame_align_crop_tenor_list.append(frame_align_crop_tenor_arcnorm) 
 
                 id_compare_values_array = np.array(id_compare_values).transpose(1,0)
                 min_indexs = np.argmin(id_compare_values_array,axis=0)
