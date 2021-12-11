@@ -1,8 +1,8 @@
 # SimSwap-train
 Reimplement of SimSwap training code<br />
-这份代码原本是中秋节的时候写的；<br />
-后来我们团队有换脸相关需求了，又做了很多优化，不过没法分享出来；<br />
-我把这份代码的使用文档更新了一版，512pix是可以训的，希望能帮助到各位。<br /><br /><br />
+- 20210919 这份代码原本是中秋节的时候写的；<br />
+- 20211130 后来我们团队有换脸相关需求了，做了很多改进与优化，不过应该没法分享出来；<br />
+- 20211211 我把这份代码的使用文档更新了一版，512pix是可以训的，希望能帮助到各位。<br /><br /><br />
 
 # Instructions
 ## 1.Environment preparation
@@ -28,23 +28,40 @@ After this, you can extract faces of any resolution and pass them to the model f
 
 
 ## 2.Preparing training data
-- Put all the image files(.jpg, .jpeg, .png and .bmp files) in your datapath (eg. `./dataset/CelebA`)
+- Put all the image files(`.jpg`, `.jpeg`, `.png` and `.bmp` supported) in your datapath (eg. `./dataset/CelebA`)
 - Run the commad with :<br />
 `python make_dataset.py --dataroot ./dataset/CelebA --extract_size 512 --output_img_dir ./dataset/CelebA/imgs --output_latent_dir ./dataset/CelebA/latents`<br /><br />
 - When processing done, the `cropped face images` and `net_Arc embedded latents` will be recored in the `output_img_dir` and `output_latent_dir` directories.<br /><br /><br /><br />
 
 ## 3.Start Training
-### （1）Finetuning
-&emsp;&emsp;Run command:<br />
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue_train`<br /><br />
-&emsp;&emsp; NOTICE: If chekpoints/`name` is an un-existed folder, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.<br /><br />
+- Finetuning, run command with:<br />
+`CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
+&emsp;&emsp;`--name CelebA_512_finetune /`<br />
+&emsp;&emsp;`--which_epoch latest /`<br />
+&emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
+&emsp;&emsp;`--image_size 512 /`<br />
+&emsp;&emsp;`--display_winsize 512 /`<br />
+&emsp;&emsp;`--continue_train`<br /><br />
+NOTICE:<br />
+&emsp;&emsp;If `chekpoints/CelebA_512_finetune` is an un-existed folder, it will first copy the official model from `chekpoints/people/*` to `chekpoints/CelebA_512_finetune/`.<br /><br />
 
-### （2）New Training
-&emsp;&emsp;Run command:<br />
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512`<br /><br />
-&emsp;&emsp;<br />
+- Or New training, run command with:<br />
+`CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
+&emsp;&emsp;`--name CelebA_512 /`<br />
+&emsp;&emsp;`--which_epoch latest /`<br />
+&emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
+&emsp;&emsp;`--image_size 512 /`<br />
+&emsp;&emsp;`--display_winsize 512 /`<br /><br />
 
-&emsp;&emsp;When processing done, `training-process visualization`, `loss log-files` and `model weights` will be stored under chekpoints/`name` folder.<br /><br /><br /><br />
+- When training is done, you will see some files in `chekpoints/CelebA_512_finetune` folder:<br /><br />
+`web/`: training-process visualization files<br />
+`latest_net_G.pth`: Latest checkpoint of G network<br />
+`latest_net_D1.pth`: Latest checkpoint of D1 network<br />
+`latest_net_D2.pth`: Latest checkpoint of D2 network<br />
+`loss_log.txt`: Doc to record loss during whole training process<br />
+`iter.txt`: Doc to record iter information<br />
+`iter.txt`: Doc to record options for the training<br />
+<br /><br /><br /><br />
 
 
 ## 4.Training Result
