@@ -118,7 +118,10 @@ if __name__ == '__main__':
             id_compare_values.append([])
             for source_specific_id_nonorm_tmp in source_specific_id_nonorm_list:
                 id_compare_values[-1].append(mse(b_align_crop_id_nonorm,source_specific_id_nonorm_tmp).detach().cpu().numpy())
-            b_align_crop_tenor_list.append(b_align_crop_tenor)
+            if opt.name == 'people':
+                b_align_crop_tenor_list.append(b_align_crop_tenor)
+            else:
+                b_align_crop_tenor_list.append(b_align_crop_tenor_arcnorm)
 
         id_compare_values_array = np.array(id_compare_values).transpose(1,0)
         min_indexs = np.argmin(id_compare_values_array,axis=0)
