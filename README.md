@@ -7,9 +7,10 @@ Reimplement of SimSwap training code<br />
 # Instructions
 ## 1.Environment Preparation
 ### Step 1.Install Packages for python
-&emsp;&emsp;Refer to the README document of [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages and download the pretrained model;<br />
+&emsp;&emsp;Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages and download the pretrained model;<br />
 ### Step 2.Modify the ```insightface``` package to support arbitrary-resolution training
-（2）In order to support custom resolution, you need to modify two places in `/*your envs*/site-packages/insightface/utils/face_align.py`:<br />
+#### &emsp;&emsp;CONDA environment（recommended）
+&emsp;&emsp;Modify the code in `/*your envs*/site-packages/insightface/utils/face_align.py`:<br />
 &emsp;&emsp;line28: `src_all = np.array([src1, src2, src3, src4, src5])`<br />
 &emsp;&emsp;line53: `src = src_all * image_size / 112`
 
@@ -41,7 +42,7 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 &emsp;&emsp;`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
 # Apply example
-&emsp;&emsp;给大家分享一段我们组（Bytedance AI-Lab SA-TTS）做了大量优化之后的效果：<br />
+&emsp;&emsp;我们组做了优化之后的效果：<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
 &emsp;&emsp;Watch video here：```docs/apply_example.mp4```, or watch online:<br /><br />
 
