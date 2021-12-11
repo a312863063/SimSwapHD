@@ -1,6 +1,8 @@
 # SimSwap-train
 Reimplement of SimSwap training code<br />
-趁着中秋节复现了一版SimSwap的训练代码，支持高分辨率数据的训练，分享给大家。
+这份代码原本是中秋节的时候写的；<br />
+后来我们团队有换脸相关需求了，又做了很多优化，不过没法分享出来；<br />
+我把这份代码的使用文档更新了一版，512pix是可以训的，希望能帮助到各位。
 
 ## Instructions
 ### 1.Environment Preparation
@@ -37,8 +39,8 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 &emsp;&emsp;`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
 ### 6.Apply example
-&emsp;&emsp;分享一段我们组做了大量优化之后的效果：<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
-&emsp;&emsp;查看视频可以在这里：```docs/apply_example.mp4```
+&emsp;&emsp;Watch video here：```docs/apply_example.mp4```, or watch online:
+&emsp;&emsp;This is the effect of our team doing many optimizations on SimSwap.<br />
 
 
