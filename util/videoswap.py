@@ -19,7 +19,7 @@ def _totensor(array):
     img = tensor.transpose(0, 1).transpose(0, 2).contiguous()
     return img.float().div(255)
 
-def video_swap(video_path, id_vetor, swap_model, detect_model, save_path, temp_results_dir='./temp_results', crop_size=224, no_simswaplogo = False,use_mask =False):
+def video_swap(video_path, id_vetor, swap_model, detect_model, save_path, temp_results_dir='./temp_results', crop_size=224, no_simswaplogo = False,use_mask =False, name='people'):
     video_forcheck = VideoFileClip(video_path)
     if video_forcheck.audio is None:
         no_audio = True
@@ -78,7 +78,8 @@ def video_swap(video_path, id_vetor, swap_model, detect_model, save_path, temp_r
 
                     frame_align_crop_tenor = _totensor(cv2.cvtColor(frame_align_crop,cv2.COLOR_BGR2RGB))[None,...].cuda()
 
-                    swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]
+                    input_norm = spNorm(frame_align_crop_tenor) if name != 'people' else frame_align_crop_tenor
+                    swap_result = swap_model(img_id, input_norm, id_vetor, None)[0]
                     swap_result_list.append(swap_result)
                     frame_align_crop_tenor_list.append(frame_align_crop_tenor)
 
