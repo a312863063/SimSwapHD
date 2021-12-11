@@ -83,17 +83,18 @@ NOTICE:<br />
 ### （2）CelebA with 512x512 res
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_1.png)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_2.png)
-
+<br /><br /><br /><br />
 
 ## 5.Inference
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning. Therefore, our Inference codes are different from official codes.<br />
 - In order to be compatible with the official model, I modify all the places including
 `swap_result = swap_model(None, frame_align_crop_tenor, id_vetor, None, True)[0]`<br />
 to <br />
-`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
+`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` 
+<br /><br /><br /><br />
 
 # Our work
-&emsp;&emsp;I share with you the effect of improved version SimSwapHD, which has made changes in both structure and training-processing from our group: ByteDance AILab SA-TTS.<br />
+&emsp;&emsp;I share with you the effect of improved version SimSwapHD, which has made changes in both structure and training-processing from our group.<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
 &emsp;&emsp;Watch video here:<br />
 &emsp;&emsp;Video file is here: ```docs/apply_example.mp4```<br /><br />
