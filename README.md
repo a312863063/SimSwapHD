@@ -7,7 +7,8 @@ Reimplement of SimSwap training code<br />
 # Instructions
 ## 1.Environment preparation
 ### Step 1.Install packages for python
-&emsp;&emsp;Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages and download the pretrained model;<br />
+&emsp;&emsp;1) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages.<br />
+&emsp;&emsp;2) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to download the 224-pix pretrained model (for finetune) or none and other necessary pretrained weights.<br /><br />
 ### Step 2.Modify the ```insightface``` package to support arbitrary-resolution training
 #### &emsp;&emsp;CONDA environment (recommend)
 &emsp;&emsp;If your use CONDA and conda environment name is ```simswap```, then find the code: <br />
@@ -56,7 +57,7 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 &emsp;&emsp;`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
 # Apply example
-&emsp;&emsp;我们组（ByteDance AI-Lab SA-TTS）做了优化之后的效果：<br />
+&emsp;&emsp;The demo presented below uses modified architecture and with many training optimizations, and I'm sorry I cannot share that for the business issues.<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
 &emsp;&emsp;Watch video here:<br />
 &emsp;&emsp;Video file here: ```docs/apply_example.mp4```<br /><br />
