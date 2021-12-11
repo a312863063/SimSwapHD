@@ -30,7 +30,7 @@ After modifying code, we can extract faces of any resolution and pass them to th
 ## 2. Preparing training data
 ### Preparing image files
 - Put all the image files in your datapath (eg. `./dataset/CelebA`)<br />
-- We reconmend you with [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)) dataset which contains clear and diverse face images.<br /><br />
+- We recommend you with [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset which contains clear and diverse face images.<br /><br />
 ### Pre-Processing image files
 - Run the commad with :<br />
 `CUDA_VISIBLE_DEVICES=0 python make_dataset.py /`<br />
@@ -38,7 +38,7 @@ After modifying code, we can extract faces of any resolution and pass them to th
 &emsp;&emsp;`--extract_size 512 /`<br />
 &emsp;&emsp;`--output_img_dir ./dataset/CelebA/imgs /`<br />
 &emsp;&emsp;`--output_latent_dir ./dataset/CelebA/latents`<br /><br />
-### Getting extracte images and latents
+### Getting extracted images and latents
 - When data-processing is done, two folders will be created in `./dataset/CelebA/`:<br />
 `./dataset/CelebA/imgs/`: extracted 512-pix images<br />
 `./dataset/CelebA/latents/`: extracted image face latents embedded from ArcNet network<br /><br /><br /><br />
@@ -103,15 +103,12 @@ NOTICE:<br />
 
 ### Differences from official SimSwap codes
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
-- In order to be compatible with the official pretrained-model, I modify all the places including: <br />
-`swap_result = swap_model(None, frame_align_crop_tenor, id_vetor, None, True)[0]`<br />
-to <br />
-`input_norm = spNorm(frame_align_crop_tenor) if opt.name != 'people' else frame_align_crop_tenor`<br />
-`swap_result = swap_model(img_id, input_norm, id_vetor, None)[0]`<br />
+- This code can be compatible with the official pretrained-model.<br />
 <br /><br /><br />
 
 # Our work
-&emsp;&emsp;I share with you the effect of improved version <b>SimSwapHD</b>, which has made changes in both structure and training-processing from our group.<br />
+I share with you the effect of improved version <b>SimSwapHD</b>, which has made changes in structure and faceswap-processing.<br />
+<b>SimSwapHD</b> is made from our group: <b>Bytedance AI-Lab SA_TTS</b> and is not open-source yet.<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
 Watch video here:<br />
 Or here: ```docs/apply_example.mp4```<br /><br />
