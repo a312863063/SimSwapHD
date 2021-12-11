@@ -74,7 +74,9 @@ if __name__ == '__main__':
 
             b_align_crop_tenor = _totensor(cv2.cvtColor(b_align_crop,cv2.COLOR_BGR2RGB))[None,...].cuda()
 
-            swap_result = model(None, b_align_crop_tenor, latend_id, None, True)[0]
+            input_norm = spNorm(b_align_crop_tenor) if opt.name != 'people' else b_align_crop_tenor
+            swap_result = model(None, input_norm, latend_id, None, True)[0]
+        
             swap_result_list.append(swap_result)
             b_align_crop_tenor_list.append(b_align_crop_tenor)
 
