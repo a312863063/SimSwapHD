@@ -103,7 +103,7 @@ NOTICE:<br />
 
 ### Differences from our codes and official codes
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
-- This code can be compatible with the official SimSwap pretrained-model.<br />
+- This code can be compatible with the official SimSwap pretrained-weight.<br />
 <br /><br /><br />
 
 # Our work
