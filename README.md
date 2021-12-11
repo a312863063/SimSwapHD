@@ -36,3 +36,9 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 &emsp;&emsp;to <br />
 &emsp;&emsp;`swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
+### 6.Apply example
+&emsp;&emsp;分享一段我们组做了大量优化之后的效果：<br />
+![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
+&emsp;&emsp;查看视频可以在这里：```docs/apply_example.mp4```
+
+
