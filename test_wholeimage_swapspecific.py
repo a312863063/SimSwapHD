@@ -105,7 +105,10 @@ if __name__ == '__main__':
         b_align_crop_id_nonorm = model.netArc(b_align_crop_tenor_arcnorm_downsample)
 
         id_compare_values.append(mse(b_align_crop_id_nonorm,specific_person_id_nonorm).detach().cpu().numpy())
-        b_align_crop_tenor_list.append(b_align_crop_tenor)
+        if opt.name == 'people':
+            b_align_crop_tenor_list.append(b_align_crop_tenor)
+        else:
+            b_align_crop_tenor_list.append(b_align_crop_tenor_arcnorm)
 
     id_compare_values_array = np.array(id_compare_values)
     min_index = np.argmin(id_compare_values_array)
