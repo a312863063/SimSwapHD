@@ -28,19 +28,24 @@ After modifying code, we can extract faces of any resolution and pass them to th
 
 
 ## 2. Preparing training data
-- Put all the image files (eg. you can use [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)) in your datapath (eg. `./dataset/CelebA`)
+### Preparing image files
+- Put all the image files in your datapath (eg. `./dataset/CelebA`)<br />
+- We reconmend you with [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)) dataset which contains clear and diverse face images.<br /><br />
+### Pre-Processing image files
 - Run the commad with :<br />
 `CUDA_VISIBLE_DEVICES=0 python make_dataset.py /`<br />
 &emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
 &emsp;&emsp;`--extract_size 512 /`<br />
 &emsp;&emsp;`--output_img_dir ./dataset/CelebA/imgs /`<br />
-&emsp;&emsp;`--output_latent_dir ./dataset/CelebA/latents`<br />
+&emsp;&emsp;`--output_latent_dir ./dataset/CelebA/latents`<br /><br />
+### Getting extracte images and latents
 - When data-processing is done, two folders will be created in `./dataset/CelebA/`:<br />
 `./dataset/CelebA/imgs/`: extracted 512-pix images<br />
 `./dataset/CelebA/latents/`: extracted image face latents embedded from ArcNet network<br /><br /><br /><br />
 
 ## 3. Start Training
-- Finetuning, run command with:<br />
+### Finetuning
+- Run the command with:<br />
 `CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
 &emsp;&emsp;`--name CelebA_512_finetune /`<br />
 &emsp;&emsp;`--which_epoch latest /`<br />
@@ -51,7 +56,8 @@ After modifying code, we can extract faces of any resolution and pass them to th
 NOTICE:<br />
 &emsp;&emsp;If `chekpoints/CelebA_512_finetune` is an un-existed folder, it will first copy the official model from `chekpoints/people/latest_net_*.pth` to `chekpoints/CelebA_512_finetune/`.<br /><br />
 
-- Or New training, run command with:<br />
+### New training
+- Run the command with:<br />
 `CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
 &emsp;&emsp;`--name CelebA_512 /`<br />
 &emsp;&emsp;`--which_epoch latest /`<br />
@@ -86,7 +92,7 @@ NOTICE:<br />
 to <br />
 `swap_result = swap_model(None, spNorm(frame_align_crop_tenor), id_vetor, None, True)[0]` <br />
 
-# Inference result
+# Our work
 &emsp;&emsp;I share with you the effect of improved version SimSwapHD, which has made changes in both structure and training-processing from our group: ByteDance AILab SA-TTS.<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
 &emsp;&emsp;Watch video here:<br />
