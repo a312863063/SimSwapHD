@@ -72,7 +72,7 @@ NOTICE:<br />
 `latest_net_D2.pth`: Latest checkpoint of D2 network<br />
 `loss_log.txt`: Doc to record loss during whole training process<br />
 `iter.txt`: Doc to record iter information<br />
-`iter.txt`: Doc to record options for the training<br />
+`opt.txt`: Doc to record options for the training<br />
 <br /><br /><br /><br />
 
 
