@@ -8,6 +8,7 @@ import torch.nn.functional as F
 from torchvision import transforms
 from models.models import create_model
 from options.test_options import TestOptions
+from util.norm import SpecificNorm
 
 
 def lcm(a, b): return abs(a * b) / fractions.gcd(a, b) if a and b else 0
@@ -34,6 +35,7 @@ if __name__ == '__main__':
     torch.nn.Module.dump_patches = True
     model = create_model(opt)
     model.eval()
+    spNorm =SpecificNorm()
 
     with torch.no_grad():
         
@@ -61,7 +63,8 @@ if __name__ == '__main__':
 
 
         ############## Forward Pass ######################
-        img_fake = model(img_id, img_att, latend_id, latend_id, True)
+        input_norm = spNorm(img_att) if opt.name != 'people' else img_att
+        img_fake = model(img_id, input_norm, latend_id, latend_id, True)
 
 
         for i in range(img_id.shape[0]):
