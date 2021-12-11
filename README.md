@@ -11,8 +11,8 @@ Reimplement of SimSwap training code<br />
 &emsp;&emsp;2) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to download the 224-pix pretrained model (for finetune) or none and other necessary pretrained weights.<br /><br />
 ### Step 2.Modify the ```insightface``` package to support arbitrary-resolution training
 #### &emsp;&emsp;CONDA environment (recommend)
-&emsp;&emsp;If your use CONDA and conda environment name is ```simswap```, then find the code: <br />
-&emsp;&emsp; `C://Anaconda/envs/```simswap```/Lib/site-packages/insightface/utils/face_align.py`<br /><br />
+&emsp;&emsp;If your use CONDA and conda environment name is ```simswap```, then find the code in place: <br />
+&emsp;&emsp;&emsp;&emsp; `C://Anaconda/envs/```simswap```/Lib/site-packages/insightface/utils/face_align.py`<br /><br />
 &emsp;&emsp;change #line 28 & 29:<br />
 &emsp;&emsp;&emsp;&emsp;`src = np.array([src1, src2, src3, src4, src5])`<br />
 &emsp;&emsp;&emsp;&emsp;`src_map = {112: src, 224: src * 2}`<br />
@@ -24,7 +24,7 @@ Reimplement of SimSwap training code<br />
 &emsp;&emsp;into<br />
 &emsp;&emsp;&emsp;&emsp;`src = src_all * image_size / 112`<br /><br />
 #### &emsp;&emsp;None-CONDA environment
-&emsp;&emsp;Just find the location of the package and change the code in the same way as above.<br /><br /><br /><br />
+&emsp;&emsp;&emsp;&emsp;Just find the location of the package and change the code in the same way as above.<br /><br /><br /><br />
 
 
 
@@ -34,13 +34,18 @@ Reimplement of SimSwap training code<br />
 &emsp;&emsp;After processing, the `cropped face images` and ` net_Arc embedded latents` will be recored in the `output_img_dir` and `output_latent_dir` directories.<br /><br /><br /><br />
 
 ## 3.Start Training
-### （1）New Training
-`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512`<br /><br />
-Training visualization, loss log-files and model weights will be stored in chekpoints/`name` folder.
-
-### （2）Finetuning
+### （1）Finetuning
+&emsp;&emsp;Run command:
 `CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512_finetune --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512 --continue_train`<br /><br />
-If chekpoints/`name` is an un-existed folder, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.
+&emsp;&emsp; NOTICE: If chekpoints/`name` is an un-existed folder, it will first copy the official model from chekpoints/people to chekpoints/`name`; then finetuning.<br /><br />
+
+### （2）New Training
+&emsp;&emsp;Run command:
+`CUDA_VISIBLE_DEVICES=0 python train.py --name CelebA_512 --dataroot ./dataset/CelebA --image_size 512 --display_winsize 512`<br /><br />
+&emsp;&emsp;<br />
+
+&emsp;&emsp;When training is finished, training-process visualization, loss log-files and model weights will be stored in chekpoints/`name` folder.<br /><br /><br /><br />
+
 
 ## 4.Training Result
 ### （1）CelebA with 224x224 res
@@ -49,6 +54,7 @@ If chekpoints/`name` is an un-existed folder, it will first copy the official mo
 ### （2）CelebA with 512x512 res
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_1.png)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/train_celeba_512_2.png)
+
 
 ## 5.Inference
 &emsp;&emsp;I applied spNorm to the high-resolution image during training, which is conducive to the the model learning. Therefore, during Inference you need to modify<br />
