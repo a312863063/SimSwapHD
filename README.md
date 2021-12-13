@@ -108,5 +108,3 @@ NOTICE:<br />
 - This code can be compatible with the official SimSwap pretrained-weight.<br />
 <br /><br /><br />
 
-
-
