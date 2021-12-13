@@ -99,7 +99,7 @@ NOTICE:<br />
 &emsp;&emsp;`--temp_path ./temp_results `<br /><br />
 
 ### Face swapping for video/images with more faces
-- We inherited the almost same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md)<br />
+- We inherited almost the same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md)<br />
 - `crop_size` -> `image_size`<br /><br />
 
 ### Differences from our codes and official codes
