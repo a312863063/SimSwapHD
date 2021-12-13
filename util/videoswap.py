@@ -79,7 +79,7 @@ def video_swap(video_path, id_vetor, swap_model, detect_model, save_path, temp_r
                     frame_align_crop_tenor = _totensor(cv2.cvtColor(frame_align_crop,cv2.COLOR_BGR2RGB))[None,...].cuda()
 
                     input_norm = spNorm(frame_align_crop_tenor) if name != 'people' else frame_align_crop_tenor
-                    swap_result = swap_model(img_id, input_norm, id_vetor, None)[0]
+                    swap_result = swap_model(None, input_norm, id_vetor, None, True)[0]
                     swap_result_list.append(swap_result)
                     frame_align_crop_tenor_list.append(frame_align_crop_tenor)
 
