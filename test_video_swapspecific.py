@@ -34,7 +34,7 @@ if __name__ == '__main__':
     opt = TestOptions().parse()
     pic_specific = opt.pic_specific_path
     start_epoch, epoch_iter = 1, 0
-    crop_size = 224
+    crop_size = opt.image_size
 
     torch.nn.Module.dump_patches = True
     model = create_model(opt)
@@ -80,5 +80,5 @@ if __name__ == '__main__':
         specific_person_id_nonorm = model.netArc(specific_person_downsample)
 
         video_swap(opt.video_path, latend_id,specific_person_id_nonorm, opt.id_thres, \
-            model, app, opt.output_path,temp_results_dir=opt.temp_path,no_simswaplogo=opt.no_simswaplogo,use_mask=opt.use_mask, name=opt.name)
+            model, app, opt.output_path,temp_results_dir=opt.temp_path,crop_size=crop_size,no_simswaplogo=opt.no_simswaplogo,use_mask=opt.use_mask, name=opt.name)
 
