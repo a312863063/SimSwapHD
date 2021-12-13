@@ -34,7 +34,7 @@ if __name__ == '__main__':
     opt = TestOptions().parse()
 
     start_epoch, epoch_iter = 1, 0
-    crop_size = 224
+    crop_size = opt.image_size
 
     torch.nn.Module.dump_patches = True
     model = create_model(opt)
@@ -70,5 +70,5 @@ if __name__ == '__main__':
         latend_id = F.normalize(latend_id, p=2, dim=1)
 
         video_swap(opt.video_path, latend_id, model, app, opt.output_path,temp_results_dir=opt.temp_path,\
-            no_simswaplogo=opt.no_simswaplogo,use_mask=opt.use_mask, name=opt.name)
+            crop_size=crop_size,no_simswaplogo=opt.no_simswaplogo,use_mask=opt.use_mask, name=opt.name)
 
