@@ -99,7 +99,8 @@ NOTICE:<br />
 &emsp;&emsp;`--temp_path ./temp_results `<br /><br />
 
 ### Face swapping for video/images with more faces
-- We inherited the same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md).<br /><br />
+- We inherited the almost same usage from [SIMSWAP guidance](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/usage.md)<br />
+- `crop_size` -> `image_size`<br /><br />
 
 ### Differences from our codes and official codes
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
