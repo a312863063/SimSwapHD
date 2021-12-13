@@ -89,7 +89,7 @@ NOTICE:<br />
 ### Face swapping for video with 1 face
 - Run the command with:<br />
 `python test_video_swapsingle.py \`<br />
-&emsp;&emsp;`--crop_size 512 \`<br />
+&emsp;&emsp;`--image_size 512 \`<br />
 &emsp;&emsp;`--use_mask \`<br />
 &emsp;&emsp;`--name CelebA_512_finetune \`<br />
 &emsp;&emsp;`--Arc_path arcface_model/arcface_checkpoint.tar \`<br />
