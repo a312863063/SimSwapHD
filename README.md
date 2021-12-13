@@ -33,10 +33,10 @@ After modifying code, we can extract faces of any resolution and pass them to th
 - We recommend you with [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset which contains clear and diverse face images.<br /><br />
 ### Pre-Processing image files
 - Run the commad with :<br />
-`CUDA_VISIBLE_DEVICES=0 python make_dataset.py /`<br />
-&emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
-&emsp;&emsp;`--extract_size 512 /`<br />
-&emsp;&emsp;`--output_img_dir ./dataset/CelebA/imgs /`<br />
+`CUDA_VISIBLE_DEVICES=0 python make_dataset.py \`<br />
+&emsp;&emsp;`--dataroot ./dataset/CelebA \`<br />
+&emsp;&emsp;`--extract_size 512 \`<br />
+&emsp;&emsp;`--output_img_dir ./dataset/CelebA/imgs \`<br />
 &emsp;&emsp;`--output_latent_dir ./dataset/CelebA/latents`<br /><br />
 ### Getting extracted images and latents
 - When data-processing is done, two folders will be created in `./dataset/CelebA/`:<br />
@@ -46,24 +46,24 @@ After modifying code, we can extract faces of any resolution and pass them to th
 ## 3. Start Training
 ### Finetuning
 - Run the command with:<br />
-`CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
-&emsp;&emsp;`--name CelebA_512_finetune /`<br />
-&emsp;&emsp;`--which_epoch latest /`<br />
-&emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
-&emsp;&emsp;`--image_size 512 /`<br />
-&emsp;&emsp;`--display_winsize 512 /`<br />
+`CUDA_VISIBLE_DEVICES=0 python train.py \`<br />
+&emsp;&emsp;`--name CelebA_512_finetune \`<br />
+&emsp;&emsp;`--which_epoch latest \`<br />
+&emsp;&emsp;`--dataroot ./dataset/CelebA \`<br />
+&emsp;&emsp;`--image_size 512 \`<br />
+&emsp;&emsp;`--display_winsize 512 \`<br />
 &emsp;&emsp;`--continue_train`<br /><br />
 NOTICE:<br />
 &emsp;&emsp;If `chekpoints/CelebA_512_finetune` is an un-existed folder, it will first copy the official model from `chekpoints/people/latest_net_*.pth` to `chekpoints/CelebA_512_finetune/`.<br /><br />
 
 ### New training
 - Run the command with:<br />
-`CUDA_VISIBLE_DEVICES=0 python train.py /`<br />
-&emsp;&emsp;`--name CelebA_512 /`<br />
-&emsp;&emsp;`--which_epoch latest /`<br />
-&emsp;&emsp;`--dataroot ./dataset/CelebA /`<br />
-&emsp;&emsp;`--image_size 512 /`<br />
-&emsp;&emsp;`--display_winsize 512 /`<br /><br />
+`CUDA_VISIBLE_DEVICES=0 python train.py \`<br />
+&emsp;&emsp;`--name CelebA_512 \`<br />
+&emsp;&emsp;`--which_epoch latest \`<br />
+&emsp;&emsp;`--dataroot ./dataset/CelebA \`<br />
+&emsp;&emsp;`--image_size 512 \`<br />
+&emsp;&emsp;`--display_winsize 512`<br /><br />
 
 - When training is done, several files will be created in `chekpoints/CelebA_512_finetune` folder:<br />
 `web/`: training-process visualization files<br />
@@ -88,14 +88,14 @@ NOTICE:<br />
 ## 5.Inference
 ### Face swapping for video with 1 face
 - Run the command with:<br />
-`python test_video_swapsingle.py /`<br />
-&emsp;&emsp;`--crop_size 512 /`<br />
-&emsp;&emsp;`--use_mask /`<br />
-&emsp;&emsp;`--name CelebA_512_finetune /`<br />
-&emsp;&emsp;`--Arc_path arcface_model/arcface_checkpoint.tar /`<br />
-&emsp;&emsp;`--pic_a_path ./demo_file/Iron_man.jpg /`<br />
-&emsp;&emsp;`--video_path ./demo_file/multi_people_1080p.mp4 /`<br />
-&emsp;&emsp;`--output_path ./output/multi_test_swapsingle.mp4 /`<br />
+`python test_video_swapsingle.py \`<br />
+&emsp;&emsp;`--crop_size 512 \`<br />
+&emsp;&emsp;`--use_mask \`<br />
+&emsp;&emsp;`--name CelebA_512_finetune \`<br />
+&emsp;&emsp;`--Arc_path arcface_model/arcface_checkpoint.tar \`<br />
+&emsp;&emsp;`--pic_a_path ./demo_file/Iron_man.jpg \`<br />
+&emsp;&emsp;`--video_path ./demo_file/multi_people_1080p.mp4 \`<br />
+&emsp;&emsp;`--output_path ./output/multi_test_swapsingle.mp4 \`<br />
 &emsp;&emsp;`--temp_path ./temp_results `<br /><br />
 
 ### Face swapping for video/images with more faces
