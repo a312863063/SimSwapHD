@@ -34,7 +34,7 @@ if __name__ == '__main__':
     opt = TestOptions().parse()
 
     start_epoch, epoch_iter = 1, 0
-    crop_size = opt.crop_size
+    crop_size = opt.image_size
 
     torch.nn.Module.dump_patches = True
     model = create_model(opt)
