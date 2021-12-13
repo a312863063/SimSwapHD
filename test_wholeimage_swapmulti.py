@@ -31,7 +31,7 @@ if __name__ == '__main__':
     opt = TestOptions().parse()
 
     start_epoch, epoch_iter = 1, 0
-    crop_size = 224
+    crop_size = opt.image_size
 
     torch.nn.Module.dump_patches = True
     logoclass = watermark_image('./simswaplogo/simswaplogo.png')
