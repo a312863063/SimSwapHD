@@ -65,7 +65,7 @@ if __name__ == '__main__':
     img_id = img_id.cuda()
 
     #create latent id
-    img_id_downsample = F.interpolate(img_id, scale_factor=0.5)
+    img_id_downsample = F.interpolate(img_id, scale_factor=112/crop_size)
     latend_id = model.netArc(img_id_downsample)
     latend_id = F.normalize(latend_id, p=2, dim=1)
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     specific_person = specific_person.cuda()
 
     #create latent id
-    specific_person_downsample = F.interpolate(specific_person, scale_factor=0.5)
+    specific_person_downsample = F.interpolate(specific_person, scale_factor=112/crop_size)
     specific_person_id_nonorm = model.netArc(specific_person_downsample)
     # specific_person_id_norm = F.normalize(specific_person_id_nonorm, p=2, dim=1)
 
@@ -101,7 +101,7 @@ if __name__ == '__main__':
         b_align_crop_tenor = _totensor(cv2.cvtColor(b_align_crop,cv2.COLOR_BGR2RGB))[None,...].cuda()
 
         b_align_crop_tenor_arcnorm = spNorm(b_align_crop_tenor)
-        b_align_crop_tenor_arcnorm_downsample = F.interpolate(b_align_crop_tenor_arcnorm, scale_factor=0.5)
+        b_align_crop_tenor_arcnorm_downsample = F.interpolate(b_align_crop_tenor_arcnorm, scale_factor=112/crop_size)
         b_align_crop_id_nonorm = model.netArc(b_align_crop_tenor_arcnorm_downsample)
 
         id_compare_values.append(mse(b_align_crop_id_nonorm,specific_person_id_nonorm).detach().cpu().numpy())
