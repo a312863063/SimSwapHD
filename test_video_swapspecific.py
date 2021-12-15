@@ -64,7 +64,7 @@ if __name__ == '__main__':
         # img_att = img_att.cuda()
 
         #create latent id
-        img_id_downsample = F.interpolate(img_id, scale_factor=0.5)
+        img_id_downsample = F.interpolate(img_id, scale_factor=112/crop_size)
         latend_id = model.netArc(img_id_downsample)
         latend_id = F.normalize(latend_id, p=2, dim=1)
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
         specific_person = transformer_Arcface(specific_person_align_crop_pil)
         specific_person = specific_person.view(-1, specific_person.shape[0], specific_person.shape[1], specific_person.shape[2])
         specific_person = specific_person.cuda()
-        specific_person_downsample = F.interpolate(specific_person, scale_factor=0.5)
+        specific_person_downsample = F.interpolate(specific_person, scale_factor=112/crop_size)
         specific_person_id_nonorm = model.netArc(specific_person_downsample)
 
         video_swap(opt.video_path, latend_id,specific_person_id_nonorm, opt.id_thres, \
