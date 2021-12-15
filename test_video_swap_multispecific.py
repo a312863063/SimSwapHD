@@ -61,7 +61,7 @@ if __name__ == '__main__':
             # convert numpy to tensor
             specific_person = specific_person.cuda()
             #create latent id
-            specific_person_downsample = F.interpolate(specific_person, scale_factor=0.5)
+            specific_person_downsample = F.interpolate(specific_person, scale_factor=112/crop_size)
             specific_person_id_nonorm = model.netArc(specific_person_downsample)
             source_specific_id_nonorm_list.append(specific_person_id_nonorm.clone())
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
             # convert numpy to tensor
             img_id = img_id.cuda()
             #create latent id
-            img_id_downsample = F.interpolate(img_id, scale_factor=0.5)
+            img_id_downsample = F.interpolate(img_id, scale_factor=112/crop_size)
             latend_id = model.netArc(img_id_downsample)
             latend_id = F.normalize(latend_id, p=2, dim=1)
             target_id_norm_list.append(latend_id.clone())
