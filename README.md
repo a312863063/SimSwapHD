@@ -107,9 +107,3 @@ NOTICE:<br />
 - I applied spNorm to the high-resolution image during training, which is conducive to the the model learning.<br />
 - This code can be compatible with the official SimSwap pretrained-weight.<br />
 <br /><br /><br />
-
-# Our work
-I share with you the effect of improved version <b>SimSwapHD</b>, which has made changes in architecture and faceswap-processing.<br />
-<b>SimSwapHD</b> is made from our group: <b>Bytedance AI-Lab SA_TTS</b> and is not open-source yet.<br />
-![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/img/apply_example.jpg)
-Watch video [here](https://www.youtube.com/watch?v=-xK4jz42yMs) or here: ```docs/SimSwapHD.mp4```<br /><br />
