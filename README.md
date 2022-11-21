@@ -2,7 +2,7 @@
 Reimplement of SimSwap training code<br />
 - 20210919 这份代码原本是中秋节的时候写的；<br />
 - 20221122 256px的模型分享给大家，细节上会比官方的224px的好一点；<br />
-- 20221122 512px的模型已优化完成，但是属于客户定制的没法分享（效果大概是下面这样）；<br />
+- 20221122 512px的模型已优化完成，但是属于客户定制的没法分享（效果大概是下面这样）：<br />
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test1.jpg)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test2.jpg)
 ![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test_compare.jpg)
