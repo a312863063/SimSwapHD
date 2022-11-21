@@ -1,4 +1,4 @@
-# SimSwap-train
+# SimSwapHD
 Reimplement of SimSwap training code<br />
 - 20210919 这份代码原本是中秋节的时候写的；<br />
 - 20221122 256px的模型分享给大家，细节上会比官方的224px的好一点；<br />
