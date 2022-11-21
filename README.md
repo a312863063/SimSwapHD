@@ -1,14 +1,20 @@
 # SimSwap-train
 Reimplement of SimSwap training code<br />
 - 20210919 这份代码原本是中秋节的时候写的；<br />
-- 20211130 后来我们团队有换脸相关需求了，做了很多改进与优化，不过应该没法分享出来；<br />
-- 20211211 我把这份代码的使用文档更新了一版，512pix是可以训的，希望能帮助到各位。<br /><br /><br />
+- 20221122 256px的模型分享给大家，细节上会比官方的224px的好一点；<br />
+- 20221122 512px的模型已优化完成，但是属于客户定制的没法分享（效果大概是下面这样）；<br />
+![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test1.jpg)
+![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test2.jpg)
+![Image text](https://github.com/a312863063/SimSwap-train/blob/main/docs/test_compare.jpg)
+- 有兴趣做些新内容的朋友可以来联系我，不是换脸，参看[这个网站](http://www.seeprettyface.com/)。<br />
+<br /><br /><br />
 
 # Instructions
 ## 1. Environment preparation
 ### Step 1.Install packages for python
 1) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to install the python packages.<br />
-2) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to download the 224-pix pretrained model (for finetune) or none and other necessary pretrained weights.<br /><br />
+2) Refer to the [SIMSWAP preparation](https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md) to download the 224-pix pretrained model (for finetune) or none and other necessary pretrained weights.<br />
+3) Or you can download my 256px-pretrained-weight:[Baidu Netdisk](https://pan.baidu.com/s/1FyuAtL208dXCA8OxSJRpXg)（Code：i497）<br /><br />
 ### Step 2.Modify the ```insightface``` package to support arbitrary-resolution training
 - If you use CONDA and conda environment name is ```simswap```, then find the code in place: <br />
  `C://Anaconda/envs/simswap/Lib/site-packages/insightface/utils/face_align.py`<br /><br />
